@@ -87,6 +87,28 @@ label = [item for sublist in L for item in sublist]
 mnist256 = mnist256._replace(in_out_labels=label)
 games['mnist256'] = mnist256
 
+# -- Iris Species Classification ------------------------------------------------ -- #
+iris = Game(env_name='Classify_iris',
+  actionSelect='softmax', # all, soft, hard
+  input_size=4,
+  output_size=3,
+  time_factor=0,
+  layers=[8,3],
+  i_act=np.full(4,1),
+  h_act=[1,2,3,4,5,6,7,8,9,10],
+  o_act=np.full(3,1),
+  weightCap = 2.0,
+  noise_bias=0.0,
+  output_noise=[False, False, False],
+  max_episode_length = 0,
+  in_out_labels = []
+)
+L = [list(range(1, iris.input_size)),\
+     list(range(0, iris.output_size))]
+label = [item for sublist in L for item in sublist]
+iris = iris._replace(in_out_labels=label)
+games['iris'] = iris
+
 
 # -- Cart-pole Swingup --------------------------------------------------- -- #
 

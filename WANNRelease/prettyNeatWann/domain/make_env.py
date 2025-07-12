@@ -1,7 +1,5 @@
 import numpy as np
 import gym
-from matplotlib.pyplot import imread
-
 
 def make_env(env_name, seed=-1, render_mode=False):
 
@@ -39,6 +37,10 @@ def make_env(env_name, seed=-1, render_mode=False):
     if env_name.endswith("mnist256"):
       from domain.classify_gym import mnist_256
       trainSet, target  = mnist_256()
+
+    if env_name.endswith("iris"):
+      from domain.classify_gym import iris_raw
+      trainSet, target  = iris_raw()
 
     env = ClassifyEnv(trainSet,target)  
 

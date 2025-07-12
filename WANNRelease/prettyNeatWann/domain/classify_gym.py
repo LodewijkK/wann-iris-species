@@ -121,6 +121,16 @@ def mnist_256():
   z = z.reshape(-1, (256))
   return z, mnist.train_labels()
 
+def iris_raw():
+  ''' 
+  Converts iris data set to [samples x features] ([N X 4])
+  '''
+  from sklearn import datasets
+  iris = datasets.load_iris()
+  z = iris.data
+  z = z.reshape(-1, (4))
+  return z, iris.target
+
 
 def preprocess(img,size, patchCorner=(0,0), patchDim=None, unskew=True):
   """
